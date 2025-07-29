@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
 from pyspark.sql import functions as f, DataFrame
 from pyspark.sql.types import StructType, StructField, IntegerType, DoubleType, StringType, BinaryType, LongType, DataType, TimestampType
+from settings import TOPIC_NAME
 
 # необходимая библиотека с идентификатором в maven
 # вы можете использовать ее с помощью метода .config и опции "spark.jars.packages"
@@ -11,7 +12,7 @@ spark_jars_packages = "org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0"
 # вы можете использовать из с помощью метода .options(**kafka_security_options)
 kafka_security_options = {
     'kafka.bootstrap.servers': 'rc1b-2erh7b35n4j4v869.mdb.yandexcloud.net:9091',
-    'subscribe': 'persist_topic',
+    'subscribe': TOPIC_NAME,
     'kafka.security.protocol': 'SASL_SSL',
     'kafka.sasl.mechanism': 'SCRAM-SHA-512',
     'kafka.sasl.jaas.config': 'org.apache.kafka.common.security.scram.ScramLoginModule required username=\"de-student\" password=\"ltcneltyn\";',
