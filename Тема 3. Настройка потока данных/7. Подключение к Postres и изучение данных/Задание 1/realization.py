@@ -21,3 +21,4 @@ df.count()
 
 
 df.printSchema()
+print(df.head(10))
